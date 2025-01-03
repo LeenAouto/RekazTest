@@ -1,8 +1,7 @@
-﻿namespace RekazTest.Models.PresentationModels
+﻿namespace RekazTest.Models.DTOs
 {
-    public class BlobPresentationModel
+    public class BlobAddDto
     {
-        public Guid Id { get; set; }
         public string Data { get; set; } = string.Empty;
         public int Size { get; set; }
         public DateTime CreatedAt { get; set; }

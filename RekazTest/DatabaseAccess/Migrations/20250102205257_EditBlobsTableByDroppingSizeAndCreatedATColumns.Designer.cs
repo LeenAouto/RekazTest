@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RekazTest.DatabaseAccess;
 
@@ -11,9 +12,11 @@ using RekazTest.DatabaseAccess;
 namespace RekazTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250102205257_EditBlobsTableByDroppingSizeAndCreatedATColumns")]
+    partial class EditBlobsTableByDroppingSizeAndCreatedATColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +32,9 @@ namespace RekazTest.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("Data")
+                    b.Property<byte[]>("Data")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
@@ -44,6 +47,9 @@ namespace RekazTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
+
+                    b.Property<string>("BackendType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("BlobId")
                         .HasColumnType("uniqueidentifier");

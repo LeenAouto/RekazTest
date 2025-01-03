@@ -6,7 +6,6 @@
         public Guid BlobId { get; set; }
         public int Size { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string? BackendType { get; set; }
         public Blob? Blob { get; set; }
     }
 }
