@@ -4,6 +4,7 @@ using RekazTest.Abstractions;
 using RekazTest.Models.DTOs;
 using RekazTest.Models.PresentationModels;
 using RekazTest.Models.ResponseModels;
+using RekazTest.Services.StrategyPattern;
 
 namespace RekazTest.Controllers
 {
@@ -12,11 +13,12 @@ namespace RekazTest.Controllers
     [ApiController]
     public class BlobController : ControllerBase
     {
-        private readonly IStorageBackend _storageBackend;
+        //private readonly IStorageBackend _storageBackend;
+        private readonly StorageServiceContext _storageContext;
 
-        public BlobController(IStorageBackend storageBackend)
+        public BlobController(StorageServiceContext storageContext)
         {
-            _storageBackend = storageBackend;
+            _storageContext = storageContext;
         }
 
         [HttpGet("{id}")]
@@ -24,7 +26,7 @@ namespace RekazTest.Controllers
         {
             try
             {
-                var blob = await _storageBackend.Get(id);
+                var blob = await _storageContext.GetBlob(id);
 
                 if (blob == null)
                 {
@@ -47,7 +49,7 @@ namespace RekazTest.Controllers
                 if (string.IsNullOrWhiteSpace(dto.Data))
                     return BadRequest("Input data is required");
 
-                if (IsValidBase64(dto.Data))
+                if (!IsValidBase64(dto.Data))
                     return BadRequest("Input string cannot be decoded");
 
                 var blobAdd = new BlobAddDto
@@ -57,7 +59,10 @@ namespace RekazTest.Controllers
                     CreatedAt = DateTime.UtcNow
                 };
 
-                var blob = await _storageBackend.Add(blobAdd);
+                var blob = await _storageContext.AddBlob(blobAdd);
+
+                if (blob == null)
+                    return BadRequest("Something went wrong");
 
                 return Ok(new ResponseModel<BlobPresentationModel>(blob, "Blob is saved"));
 
@@ -65,6 +70,28 @@ namespace RekazTest.Controllers
             catch
             {
                 return BadRequest("An error occured");
+            }
+        }
+
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBlob(Guid id)
+        {
+            try
+            {
+                var blob = await _storageContext.DeleteBlob(id);
+
+                if (blob == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(new ResponseModel<BlobPresentationModel>(blob, "Blob is deleted"));
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

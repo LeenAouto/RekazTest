@@ -15,11 +15,11 @@ namespace RekazTest.Services
         {
             _context = context;
         }
-        public async Task<BlobPresentationModel> Get(Guid id)
+        public async Task<BlobPresentationModel?> Get(Guid id)
         {
             try
             {
-                var blob = await _context.Blobs.Where(b => b.Id == id).SingleAsync();
+                var blob = await _context.Blobs.Where(b => b.Id == id).SingleOrDefaultAsync();
 
                 if (blob != null)
                 {
@@ -46,17 +46,19 @@ namespace RekazTest.Services
             }
         }
 
-        public async Task<BlobPresentationModel> Add(BlobAddDto dto) 
+        public async Task<BlobPresentationModel?> Add(BlobAddDto dto) 
         {
             try 
             {
                 var blob = new Blob
                 {
+                    Id = Guid.NewGuid(),
                     Data = dto.Data
                 };
 
                 var blobMetadata = new BlobMetadata
                 {
+                    Id = Guid.NewGuid(),
                     BlobId = blob.Id,
                     Size = dto.Size,
                     CreatedAt = dto.CreatedAt
@@ -82,7 +84,7 @@ namespace RekazTest.Services
             }
         }
 
-        public async Task<BlobPresentationModel> Delete(Guid id)
+        public async Task<BlobPresentationModel?> Delete(Guid id)
         {
             try
             {
