@@ -85,3 +85,9 @@ D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\BlobsMetadata\meta_dff5239a-9b2e-41ac-9729-98e88fe95918.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\BlobsMetadata\meta_e094100a-8cea-4a8e-910b-bd767e546a38.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\BlobsMetadata\meta_f47b4731-e592-45c3-b7a9-d0fdfd160f92.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\Blobs\dff5239a-9b2e-41ac-9729-98e88fe95918.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\Blobs\e094100a-8cea-4a8e-910b-bd767e546a38.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\Blobs\f47b4731-e592-45c3-b7a9-d0fdfd160f92.json

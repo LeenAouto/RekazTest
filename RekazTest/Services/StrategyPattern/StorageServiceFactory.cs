@@ -11,10 +11,16 @@ namespace RekazTest.Services.StrategyPattern
             {
                 "Database" => new MSSQLDatabase(dbContext),
                 "LocalFileSystem" => new LocalFileSystem(
-                    configuration["BlobsStoragePath"] ?? throw new ArgumentNullException("BlobsStoragePath is missing in configuration."),
-                    configuration["BlobsMetadataStoragePath"] ?? throw new ArgumentNullException("BlobsMetadataStoragePath is missing in configuration.")
+                    configuration["LocalFileSystemPaths:BlobsStoragePath"] ?? throw new ArgumentNullException("BlobsStoragePath is missing in configuration."),
+                    configuration["LocalFileSystemPaths:BlobsMetadataStoragePath"] ?? throw new ArgumentNullException("BlobsMetadataStoragePath is missing in configuration.")
                     ),
-                //"AmazonS3" => new AmazonS3(configuration),
+                "AmazonS3" => new AmazonS3(
+                    configuration["S3Options:BlobsBucketName"] ?? throw new ArgumentNullException("BucketName is missing in configuration."),
+                    //configuration["S3Options:BlobsMetadataBucketName"] ?? throw new ArgumentNullException("BlobsMetadataBucketName is missing in configuration."),
+                    configuration["S3Options:Region"] ?? throw new ArgumentNullException("Region is missing in configuration."),
+                    configuration["S3Options:AccessKey"] ?? throw new ArgumentNullException("AccessKey is missing in configuration."),
+                    configuration["S3Options:SecretKey"] ?? throw new ArgumentNullException("SecretKey is missing in configuration.")
+                    ),
                 //"FTP" => new FTP(configuration),
                 _ => throw new ArgumentException("Invalid backend type")
             };
