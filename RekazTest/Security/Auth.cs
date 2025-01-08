@@ -30,7 +30,7 @@ namespace RekazTest.Security
 
                 var authResponseModel = new AuthResponseModel
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
+                    Token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
                     IsAuthenticated = true,
                     ExpiresOn = jwtToken.ValidTo
                 };

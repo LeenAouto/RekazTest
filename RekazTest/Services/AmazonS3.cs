@@ -38,14 +38,14 @@ namespace RekazTest.Services
                 var metadataJson = await metadataResponse.Content.ReadAsStringAsync();
 
                 var blob = JsonSerializer.Deserialize<Blob>(blobData);
-                var metadata = JsonSerializer.Deserialize<BlobMetadata>(metadataJson);
+                var blobMetadata = JsonSerializer.Deserialize<BlobMetadata>(metadataJson);
 
                 var blobPresentationModel = new BlobPresentationModel
                 {
                     Id = id,
                     Data = blob?.Data ?? "Couldn't get the data",
-                    Size = metadata?.Size ?? 0,
-                    CreatedAt = metadata?.CreatedAt ?? DateTime.UtcNow
+                    Size = blobMetadata?.Size ?? 0,
+                    CreatedAt = blobMetadata?.CreatedAt ?? DateTime.UtcNow
                 };
 
                 return blobPresentationModel;
@@ -66,7 +66,7 @@ namespace RekazTest.Services
                     Data = dto.Data
                 };
 
-                var metadata = new BlobMetadata
+                var blobMetadata = new BlobMetadata
                 {
                     Id = Guid.NewGuid(),
                     BlobId = blob.Id,
@@ -75,7 +75,7 @@ namespace RekazTest.Services
                 };
 
                 var blobContent = new StringContent(JsonSerializer.Serialize(blob), Encoding.UTF8, "application/json");
-                var metadataContent = new StringContent(JsonSerializer.Serialize(metadata), Encoding.UTF8, "application/json");
+                var metadataContent = new StringContent(JsonSerializer.Serialize(blobMetadata), Encoding.UTF8, "application/json");
 
                 var blobResponse = await SendS3Request("PUT", $"Blobs/{blob.Id}", blobContent);
                 var metadataResponse = await SendS3Request("PUT", $"BlobsMetadata/meta_{blob.Id}", metadataContent);
@@ -87,8 +87,8 @@ namespace RekazTest.Services
                 {
                     Id = blob.Id,
                     Data = blob.Data,
-                    Size = metadata.Size,
-                    CreatedAt = metadata.CreatedAt
+                    Size = blobMetadata.Size,
+                    CreatedAt = blobMetadata.CreatedAt
                 };
 
                 return blobPresentationModel;

@@ -7,7 +7,6 @@ using RekazTest.Services.StrategyPattern;
 
 namespace RekazTest.Controllers
 {
-    //[Route("api/[controller]")]
     [Route("v1/blobs")]
     [ApiController]
     public class BlobController : ControllerBase
@@ -20,6 +19,11 @@ namespace RekazTest.Controllers
             _storageContext = storageContext;
         }
 
+        /// <summary>
+        /// Retrive a blob, specified by its Id, from the storage backend.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBlob(Guid id)
@@ -41,6 +45,12 @@ namespace RekazTest.Controllers
             }
         }
 
+        /// <summary>
+        /// Upload a blob of Base64 encoded binary data to the storage backend. 
+        /// If the service cannot decode the Base64 binary string upon receiving the request, the request will be rejected.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> UploadBlob([FromBody] BlobInputDto dto)
@@ -74,6 +84,11 @@ namespace RekazTest.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete a blob, specified by its Id, from the storage backend.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlob(Guid id)

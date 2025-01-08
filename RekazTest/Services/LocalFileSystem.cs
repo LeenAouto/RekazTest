@@ -27,17 +27,18 @@ namespace RekazTest.Services
         {
             try
             {
-                var (blob, metadata) = await GetBlobAndMetadata(id);
+                var (blob, blobMetadata) = await GetBlobAndMetadata(id);
 
-                if (blob != null && metadata != null)
+                if (blob != null && blobMetadata != null)
                 {
-                    return new BlobPresentationModel
+                    var blobPresentationModel = new BlobPresentationModel
                     {
                         Id = blob.Id,
                         Data = blob.Data,
-                        Size = metadata.Size,
-                        CreatedAt = metadata.CreatedAt
+                        Size = blobMetadata.Size,
+                        CreatedAt = blobMetadata.CreatedAt
                     };
+                    return blobPresentationModel;
                 }
 
                 return null;
@@ -97,20 +98,21 @@ namespace RekazTest.Services
         {
             try
             {
-                var (blob, metadata) = await GetBlobAndMetadata(id);
+                var (blob, blobMetadata) = await GetBlobAndMetadata(id);
 
-                if (blob != null && metadata != null)
+                if (blob != null && blobMetadata != null)
                 {
                     File.Delete(GetFilePath(id, "blob"));
                     File.Delete(GetFilePath(id, "meta"));
 
-                    return new BlobPresentationModel
+                    var blobPresentationModel = new BlobPresentationModel
                     {
                         Id = blob.Id,
                         Data = blob.Data,
-                        Size = metadata.Size,
-                        CreatedAt = metadata.CreatedAt
+                        Size = blobMetadata.Size,
+                        CreatedAt = blobMetadata.CreatedAt
                     };
+                    return blobPresentationModel;
                 }
 
                 return null;

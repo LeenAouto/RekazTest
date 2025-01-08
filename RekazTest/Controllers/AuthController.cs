@@ -4,7 +4,7 @@ using RekazTest.Security;
 
 namespace RekazTest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     [ApiController]
     public class AuthController : Controller
     {
@@ -14,6 +14,10 @@ namespace RekazTest.Controllers
             _auth = auth;
         }
 
+        /// <summary>
+        /// Simply generate a JWT token to authorize requests.
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
         public IActionResult GenerateAuthToken()

@@ -2,9 +2,9 @@
 {
     public class AuthResponseModel
     {
-        public string token {  get; set; } = string.Empty;
+        public string Token {  get; set; } = string.Empty;
         public bool IsAuthenticated { get; set; }
         public DateTime ExpiresOn { get; set; }
-        public string message { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
     }
 }

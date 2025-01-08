@@ -6,13 +6,13 @@ using Microsoft.OpenApi.Models;
 using RekazTest.Abstractions;
 using RekazTest.DatabaseAccess;
 using RekazTest.Security;
-using RekazTest.Services;
 using RekazTest.Services.StrategyPattern;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Add environment variables
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -20,12 +20,23 @@ builder.Configuration
 
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "RekazTest API",
+        Description = "An ASP.NET Core Web API for Rekaz Hiring - Simple Drive Project"
+    });
+
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -52,6 +63,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+var s3key = builder.Configuration["S3Options:AccessKey"];
+var jwtKey = builder.Configuration["JWT:Key"];
+
+// Add JWT authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -73,6 +88,7 @@ builder.Services.AddAuthentication(options =>
             ClockSkew = TimeSpan.Zero
         };
     });
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

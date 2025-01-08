@@ -272,3 +272,7 @@ D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\unix
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\BlobsMetadata\meta_25233df7-12e0-4dea-8817-1771ce6c977b.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\LocalFileSystem\Blobs\25233df7-12e0-4dea-8817-1771ce6c977b.json
+D:\Program Files\source\repos\RekazTest\RekazTest\bin\Debug\net6.0\RekazTest.xml
+D:\Program Files\source\repos\RekazTest\RekazTest\obj\Debug\net6.0\RekazTest.xml

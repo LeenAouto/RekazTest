@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RekazTest</name>
+    </assembly>
+    <members>
+        <member name="M:RekazTest.Controllers.AuthController.GenerateAuthToken">
+            <summary>
+            Simply generate a JWT token to authorize requests.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RekazTest.Controllers.BlobController.GetBlob(System.Guid)">
+            <summary>
+            Retrive a blob, specified by its Id, from the storage backend.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RekazTest.Controllers.BlobController.UploadBlob(RekazTest.Models.DTOs.BlobInputDto)">
+            <summary>
+            Upload a blob of Base64 encoded binary data to the storage backend. 
+            If the service cannot decode the Base64 binary string upon receiving the request, the request will be rejected.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RekazTest.Controllers.BlobController.DeleteBlob(System.Guid)">
+            <summary>
+            Delete a blob, specified by its Id, from the storage backend.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RekazTest.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:RekazTest.Migrations.EditBlobsTableByDroppingSizeAndCreatedATColumns">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditBlobsTableByDroppingSizeAndCreatedATColumns.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditBlobsTableByDroppingSizeAndCreatedATColumns.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditBlobsTableByDroppingSizeAndCreatedATColumns.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:RekazTest.Migrations.EditDataTypeOfDataColumnAndRemoveBackendColumnFromMetadata">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditDataTypeOfDataColumnAndRemoveBackendColumnFromMetadata.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditDataTypeOfDataColumnAndRemoveBackendColumnFromMetadata.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.EditDataTypeOfDataColumnAndRemoveBackendColumnFromMetadata.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:RekazTest.Migrations.RemoveTheDefaultGUIDConstraint">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.RemoveTheDefaultGUIDConstraint.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.RemoveTheDefaultGUIDConstraint.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RekazTest.Migrations.RemoveTheDefaultGUIDConstraint.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
