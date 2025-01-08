@@ -16,7 +16,6 @@ namespace RekazTest.Services.StrategyPattern
                     ),
                 "AmazonS3" => new AmazonS3(
                     configuration["S3Options:BlobsBucketName"] ?? throw new ArgumentNullException("BucketName is missing in configuration."),
-                    //configuration["S3Options:BlobsMetadataBucketName"] ?? throw new ArgumentNullException("BlobsMetadataBucketName is missing in configuration."),
                     configuration["S3Options:Region"] ?? throw new ArgumentNullException("Region is missing in configuration."),
                     configuration["S3Options:AccessKey"] ?? throw new ArgumentNullException("AccessKey is missing in configuration."),
                     configuration["S3Options:SecretKey"] ?? throw new ArgumentNullException("SecretKey is missing in configuration.")

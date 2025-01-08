@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RekazTest.Abstractions;
 using RekazTest.Models.DTOs;
 using RekazTest.Models.PresentationModels;
 using RekazTest.Models.ResponseModels;
@@ -13,14 +12,15 @@ namespace RekazTest.Controllers
     [ApiController]
     public class BlobController : ControllerBase
     {
-        //private readonly IStorageBackend _storageBackend;
         private readonly StorageServiceContext _storageContext;
+        
 
         public BlobController(StorageServiceContext storageContext)
         {
             _storageContext = storageContext;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBlob(Guid id)
         {
@@ -41,6 +41,7 @@ namespace RekazTest.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> UploadBlob([FromBody] BlobInputDto dto)
         {
@@ -73,7 +74,7 @@ namespace RekazTest.Controllers
             }
         }
 
-        
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlob(Guid id)
         {

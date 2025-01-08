@@ -13,9 +13,6 @@ namespace RekazTest.Services
 
         public LocalFileSystem(string blobsStoragePath, string blobsMetadataStoragePath)
         {
-            //if (string.IsNullOrWhiteSpace(blobsStoragePath) || string.IsNullOrWhiteSpace(blobsMetadataStoragePath))
-            //   throw new ArgumentNullException(nameof(blobsStoragePath), "Storage path cannot be null or empty.");
-
             _blobsStoragePath = blobsStoragePath;
             _blobsMetadataStoragePath = blobsMetadataStoragePath;
 
